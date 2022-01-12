@@ -1,32 +1,36 @@
 #! /usr/bin/env node
+import path from 'path';
+import { cwd } from 'process';
 import chalk from 'chalk';
 
+import { checkProjectDirIsEmpty, checkProjectDirExists } from '#lib/checks';
 import downloadTemplate from '#lib/download-template';
 import { prompt } from '#lib/prompts';
-import renameProject from '#lib/rename-project';
+import moveProjectLocation from '#lib/move-project-location';
+import updateProjectMetadata from '#lib/update-project-metadata';
 import questions from '#data/questions';
 
-let projectName = process.argv[2];
-let template = process.argv[3];
+const projectDirArg = process.argv[2] || '.';
+const projectDir = projectDirArg === '.' ? cwd() : path.resolve(projectDirArg);
 
-const reborn = async () => {
-  const response = await prompt({ questions, projectName, template });
+const createReflektorApp = async () => {
+  try {
+    await checkProjectDirExists(projectDir);
+    checkProjectDirIsEmpty(projectDir);
 
-  const templateName = template ?
-   `reflektor-boilerplate-${template}` :
-   `reflektor-boilerplate-${response.template}`;
+    const response = await prompt({ questions, projectDir });
+    const template = `reflektor-boilerplate-${response.template}`;
+    const projectName = response.projectName;
 
-  await downloadTemplate({
-    projectName,
-    template : templateName
-  });
-  await renameProject({
-    projectName : projectName ? projectName : response.projectName,
-    template : templateName,
-  });
-
-  // eslint-disable-next-line
-  console.log(chalk.blue(`🚀 ${projectName ? projectName : response.projectName} created under output/`))
+    await downloadTemplate({ projectName, template });
+    updateProjectMetadata({ projectName });
+    await moveProjectLocation({ projectDir });
+  
+    console.log(chalk.blue(`🚀 ${projectName} created at ${projectDir}`));
+  } catch (err) {
+    console.log(chalk.red(err));
+    process.exit(-1);
+  }
 };
 
-reborn();
+createReflektorApp();
