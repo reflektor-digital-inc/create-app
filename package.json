@@ -1,0 +1,36 @@
+{
+  "name": "create-reflektor-app",
+  "type": "module",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:reflektor-digital-inc/create-reflektor-app.git",
+  "author": "Reflektor Digital",
+  "contributors": [
+    {
+      "name": "William To",
+      "url": "https://github.com/wlto",
+      "email": "william@reflektor.digital"
+    }
+  ],
+  "license": "MIT",
+  "imports": {
+    "#lib/*": "./lib/*.js",
+    "#data/*": "./data/*.js"
+  },
+  "bin": {
+    "create-reflektor-app": "bin/create-reflektor-app"
+  },
+  "scripts": {
+    "test": "node bin/create-reflektor-app"
+  },
+  "dependencies": {
+    "chalk": "^5.0.0",
+    "dotenv": "^11.0.0",
+    "eslint": "^8.6.0",
+    "got": "^12.0.1",
+    "mkdirp": "^1.0.4",
+    "mv": "^2.1.1",
+    "prompts": "^2.4.2",
+    "tar": "^6.1.11"
+  }
+}
