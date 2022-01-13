@@ -1,9 +1,9 @@
 {
-  "name": "create-reflektor-app",
+  "name": "@reflektor/create-app",
   "type": "module",
-  "version": "0.2.2",
+  "version": "0.2.4",
   "main": "index.js",
-  "repository": "git@github.com:reflektor-digital-inc/create-reflektor-app.git",
+  "repository": "git@github.com:reflektor-digital-inc/create-app.git",
   "author": "Reflektor Digital",
   "contributors": [
     {
@@ -17,9 +17,7 @@
     "#lib/*": "./lib/*.js",
     "#data/*": "./data/*.js"
   },
-  "bin": {
-    "create-reflektor-app": "bin/create-app"
-  },
+  "bin": "bin/create-app",
   "scripts": {
     "test": "node bin/create-app"
   },
