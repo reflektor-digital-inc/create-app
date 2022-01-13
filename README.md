@@ -4,11 +4,11 @@ This tool can be used to generate project repository based on one of Reflektor's
 
 ### Usage
 
-`npx create-reflektor-app [project-directory]`
+`npx @reflektor/create-app [project-directory]`
 
 OR
 
-`npx create-reflektor-app` to create a new app in the current directory.
+`npx @reflektor/create-app` to create a new app in the current directory.
 
 
 ### LICENSE
