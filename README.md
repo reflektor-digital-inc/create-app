@@ -4,8 +4,13 @@ This tool can be used to generate project repository based on one of Reflektor's
 
 ### Usage
 
-1. Ensure that you have an `.env` file with your GitHub account's personal token. Check `.env.example`.
+`npx create-reflektor-app [project-directory]`
 
-> Since our boilerplates are currently private, we need this token to have access to the boilerplate repositories.
+OR
 
-2. `yarn test`
+`npx create-reflektor-app` to create a new app in the current directory.
+
+
+### LICENSE
+
+[MIT License](./LICENSE.md)
