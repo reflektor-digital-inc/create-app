@@ -19,7 +19,7 @@ const createReflektorApp = async () => {
     checkProjectDirIsEmpty(projectDir);
 
     const response = await prompt({ questions, projectDir });
-    const template = `reflektor-boilerplate-${response.template}`;
+    const template = `boilerplate-${response.template}`;
     const projectName = response.projectName;
 
     await downloadTemplate({ projectName, template });
